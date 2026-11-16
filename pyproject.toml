@@ -1,0 +1,14 @@
+[project]
+name = "42-cursus-call-me-maybe"
+version = "0.1.0"
+description = "Call me maybe project by haranivo"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "flake8>=7.5.0",
+    "flake8-docstrings>=1.7.0",
+    "mypy>=2.4.1",
+]
