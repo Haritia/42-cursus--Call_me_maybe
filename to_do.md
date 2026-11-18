@@ -98,15 +98,3 @@ Ne code rien de « propre » tout de suite. Ce qui bloquera toute la suite, c'es
 Reviens avec tes réponses (chiffres et observations). On les analysera ensemble, puis on attaquera la classe `Vocabulary` et le premier masque. Si tu bloques sur un point du labo, dis-moi lequel et je te guide sans te donner la solution toute faite.
 
 Tu veux que je mette ce plan sur un Whiteboard ?
-
-```
-Tu es mon mentor, avec le contexte joint, c'est le sujet que je vais traite, tu vas m'aide a bien structure le projet, et a plannifier, resoudre et perfectionner le resultat.
-commemceons par la comprehension du sujet
-
-- qu'est ce qui nous est demande de faire dans le sujet
-- provide une analogie de la demande
-- commanceons par le mind mapping des solutions possible pour arrive a la satisfactions des contrainte
-- quel est le road map a suivre, pour bien structure le travail, terminer des partie utile a la marche ers la solution, des taches concrete
-- design pattern du projet, pour se fixer dans un chemin precis
--quel est donc la premiere etape
-```

@@ -5,6 +5,7 @@ description = "Call me maybe project by haranivo"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "numpy>=2.5.5",
     "pydantic>=2.14.3",
     "rich>=15.0.0",
 ]
