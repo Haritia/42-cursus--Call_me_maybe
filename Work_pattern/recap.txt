@@ -1,0 +1,20 @@
+MUST use PYDANTIC for all class validation
+can use numpy and JSON package
+function to call is chosen by th LLM
+
+Implement JSON error hamdling (invalid JSON)
+
+
+STRUCTURATION FILES:
+call_me_maybe/
+├── src/                  ← ton code
+├── llm_sdk/              ← copié tel quel, à côté de src/
+├── data/
+│   └── input/
+│       ├── functions_definition.json
+│       └── function_calling_tests.json
+├── pyproject.toml
+├── uv.lock
+├── Makefile              ← install, run, debug, clean, lint
+├── README.md
+└── .gitignore

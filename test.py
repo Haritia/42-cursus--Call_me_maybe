@@ -1,5 +1,6 @@
 from rich import print
 from rich.panel import Panel
+from rich.console import Console
 from rich import box
 
 print(Panel(
@@ -16,4 +17,12 @@ print(Panel(
     height=5,
     padding=(0, 0),
     highlight=True,
-))   
+))
+
+dico = {
+    'hello': 'world',
+    'fuck': 'you',
+    'beach': 'bitch'
+}
+console = Console()
+console.print(dico)

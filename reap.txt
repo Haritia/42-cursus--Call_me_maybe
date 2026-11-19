@@ -1,5 +1,0 @@
-MUST use PYDANTIC for all class validation
-can use numpy and JSON package
-function to call is chosen by th LLM
-
-Implement JSON error hamdling (invalid JSON)

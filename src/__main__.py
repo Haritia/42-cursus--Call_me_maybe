@@ -7,11 +7,12 @@
 #   By: haranivo <haranivo@student.42antananarivo.   +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/11/17 08:58:40 by haranivo            #+#    #+#            #
-#   Updated: 2026/11/18 18:14:35 by haranivo           ###   ########.fr      #
+#   Updated: 2026/11/20 00:41:08 by haranivo           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
 
+import argparse
 from sys import argv
 from rich.console import Console, Group
 from rich.theme import Theme
