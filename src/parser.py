@@ -7,7 +7,7 @@
 #   By: haranivo <haranivo@student.42antananarivo.   +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/11/19 23:41:01 by haranivo            #+#    #+#            #
-#   Updated: 2026/11/20 00:13:43 by haranivo           ###   ########.fr      #
+#   Updated: 2026/11/20 07:34:37 by haranivo           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -15,8 +15,9 @@
 """Parsing JSON formated values, and limit as necessary."""
 
 
+from typing import Any
 import json
-import pydantic
+from pydantic model
 from dataclasses import dataclass
 from rich.console import Console, Group
 from rich.theme import Theme
@@ -30,12 +31,16 @@ custom_theme = Theme(
 )
 console = Console(theme=custom_theme)
 
+
 @dataclass
 class Parser:
     """Configuration file jon formated input/output parser."""
 
     file: str
+    config: dict[str, Any]
     with open(file, 'r') as f:
         for content in f:
-            match content.startswith():
-                case
+            match content.startswith().strip():
+                case "prompt":
+                    config["prompt"] = 
+                    

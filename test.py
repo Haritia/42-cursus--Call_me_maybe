@@ -25,4 +25,22 @@ dico = {
     'beach': 'bitch'
 }
 console = Console()
-console.print(dico)
+console.print(dico["beach"])
+
+import json
+
+data = {"name": "Alice", "active": True}
+
+# Write Python object directly to a file
+with open("data/outout/tia.txt", "w") as f:
+    json.dump(data, f, indent=4)
+
+# Read JSON file directly into a Python dictionary
+with open("data/outout/tia.txt", "r") as f:
+    loaded_data = json.load(f)
+
+print(loaded_data["name"])
+
+import sys
+
+

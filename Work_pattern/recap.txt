@@ -18,3 +18,36 @@ call_me_maybe/
 ├── Makefile              ← install, run, debug, clean, lint
 ├── README.md
 └── .gitignore
+
+JSON PARSER:
+  error:
+    - FileNotFoundError
+    - JSONDecodeError
+    - folder instead a file
+
+  method:
+    -load/dump: work directly with file objet
+        json.load(): JSON to Python, read from a .json config file
+        json.dump(): Python to JSON, write directly to a file
+    - loads/dumps: work with JSON-formatted strings
+        json.loads(): take a JSON strings
+        json.dumps(): output a JSON str
+
+Questions de design (à décider toi-même)
+1. Quels modèles pydantic ? Au minimum trois :
+  - la définition d’une fonction (nom, description, paramètres, retour)
+  - un prompt de test
+  - un résultat (prompt, name, parameters)
+2. Les paramètres : le sujet montre number et string, et mentionne « boolean, etc. ». Comment limites-tu les types acceptés ? Que fais-tu d’un type inconnu ?
+3.Gestion des erreurs : faut-il une exception personnalisée pour regrouper toutes les erreurs de lecture ? Où les attrapes-tu : dans chaque fonction ou à un seul endroit (__main__) ?
+4. Un prompt invalide parmi cent : tu arrêtes tout, ou tu l’ignores avec un avertissement ? Pèse les deux options par rapport à « jamais de crash ».
+5. Sortie : data/output/ n’est pas dans le dépôt, donc il n’existera pas à la correction. Comment le programme s’en sort-il ?
+6. Types numériques : le sujet montre "a": 2.0 en sortie, alors que le prompt dit « 2 ». Que vaut json.load pour 2 ? Que doit contenir ton modèle pour un type number ?
+
+Tâches concrètes, dans l’ordre
+1. Lire la doc d’argparse et lister tes 3 options avec leurs valeurs par défaut.
+2. Écrire les modèles pydantic sans logique de lecture.
+3. Écrire la lecture d’un fichier JSON seul, avec ses erreurs.
+4. Brancher la validation pydantic derrière.
+5. Écrire la sortie (validation du résultat avant écriture).
+6. Brancher argparse dans __main__.py.
