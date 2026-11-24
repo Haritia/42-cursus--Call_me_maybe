@@ -1,0 +1,19 @@
+[
+    {
+        "name": "fn_add_numbers",
+        "description": "Add two numbers together and return their sum.",
+        "parameters": {
+            "a": 2,
+            "b": 3
+        },
+        "returns": 5
+    },
+    {
+        "name": "fn_greet",
+        "description": "Generate a greeting message for a person by name.",
+        "parameters": {
+            "name": "Tia"
+        },
+        "returns": "Hello my dear Tia"
+    }
+]
