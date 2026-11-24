@@ -13,17 +13,17 @@ def first_option():
 
 def parse_arg():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--function_definition',
+    parser.add_argument('--functions_definition',
                         type=str,
                         default='data/input/functions_definition.json',
                         help="function_definition_file, where to get the reference functions.")
     parser.add_argument('--input',
                         type=str,
-                        default="data/input/",
+                        default="data/input/function_calling_tests.json",
                         help="input_file, where to get the input configuration to use.")
     parser.add_argument('--output',
                         type=str,
-                        default="data/output/",
+                        default="data/output/function_calls.json",
                         help="output_file, where to write the output.")
     args = parser.parse_args()
     print(args.function_definition)
@@ -56,7 +56,11 @@ def bad_usage():
     # except argparse.ArgumentError as e:
     #     print(f"Caught error: {e}")   
 
+
 if __name__ == '__main__':
-    # first_option()
-    # parse_arg()
-    # bad_usage()
+    first_option()
+    print('\n--------------------------------------------------------------\n')
+    parse_arg()
+    print('\n--------------------------------------------------------------\n')
+    bad_usage()
+    print('\n--------------------------------------------------------------\n')

@@ -1,6 +1,5 @@
 import json
 from pathlib import Path
-import os
 
 """
 json.load(file): from config file to python
@@ -12,27 +11,41 @@ jon.dumps(obj): from python to json fomatted string
 
 def first_json():
     try:
-        file = Path()
-        with open("Work_pattern/revision/example.json", 'r') as f:
+        with open("example.json", 'r', encoding="utf-8") as f:
             data = json.load(f)
         print(type(data))
         print(type(data[0]))
     except FileNotFoundError:
-        print(f"Error 404: Sorry, the file {f} not found.")
+        print("Error 404: Sorry, the file not found.")
+        exit(1)
+    except PermissionError:
+        print("No permission to open that file.")
+        exit(1)
     except json.JSONDecodeError as e:
         print(f"Error with json: {e}")
+        exit(1)
+    except OSError as e:
+        print(f"Error found: {e}")
 
 
 def second_json():
     try:
-        with open("Work_pattern/revision/example.json", 'r') as f:
+        with open("example.json", 'r', encoding="utf-8") as f:
             data = json.load(f)
     except FileNotFoundError:   # fichier absent
-        print(f"Error 404: Sorry, the file {f} not found.")
+        print("Error 404: Sorry, the file not found.")
+        exit(1)
+    except PermissionError:
+        print("No permission to open that file.")
+        exit(1)
     except json.JSONDecodeError as e:   # json invalide
         print(f"Error with json: {e}")
-    for d in data:          # json valide
-        print(d)
+        exit(1)
+    except OSError as e:
+        print(f"Error found: {e}")
+    else:
+        for d in data:          # json valide
+            print(d)
 
 
 def third_json():
@@ -56,27 +69,34 @@ def third_json():
         },
     ]
     Path("data/output/").mkdir(parents=True, exist_ok=True)
-    with open("data/output/new.json", 'w') as f:
+    with open("data/output/new.json", 'w', encoding="utf-8") as f:
         json.dump(data, f, indent=4)
-        
+
     try:
-        with open("Work_pattern/revision/example.json", 'r') as fp:
+        with open("data/output/new.json", 'r', encoding="utf-8") as fp:
             config = json.load(fp)
     except FileNotFoundError:
-        print(f"404 Error, the file {fp} not found.")
+        print("404 Error, the file not found.")
+        exit(1)
+    except PermissionError:
+        print("No permission to open that file.")
+        exit(1)
     except json.JSONDecodeError as e:
         print(f"Erron on json: {e}")
-    print("=== DATA python list[dict] ===")
-    print(data)
-    print("=== CONFIG json -> python ===")
-    print(config)
-    print("=== PYTHON -> JSON STRING ===")
-    string = json.dumps(data, indent=2)
-    print(f"==> {type(string)} \n{string}")
-    print("=== JSON STRING -> PYTHON ===")
-    p = json.loads(string)
-    print(f"==> {type(p)}\n{p}")
-
+        exit(1)
+    except OSError as e:
+        print(f"Error found: {e}")
+    else:
+        print("=== DATA python list[dict] ===")
+        print(data)
+        print("=== CONFIG json -> python ===")
+        print(config)
+        print("=== PYTHON -> JSON STRING ===")
+        string = json.dumps(data, indent=2)
+        print(f"==> {type(string)} \n{string}")
+        print("=== JSON STRING -> PYTHON ===")
+        p = json.loads(string)
+        print(f"==> {type(p)}\n{p}")
 
 
 if __name__ == "__main__":
