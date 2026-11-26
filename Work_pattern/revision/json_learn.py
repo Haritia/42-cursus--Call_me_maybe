@@ -1,4 +1,5 @@
 import json
+import sys
 from pathlib import Path
 
 """
@@ -17,13 +18,13 @@ def first_json():
         print(type(data[0]))
     except FileNotFoundError:
         print("Error 404: Sorry, the file not found.")
-        exit(1)
+        sys.exit(1)
     except PermissionError:
         print("No permission to open that file.")
-        exit(1)
+        sys.exit(1)
     except json.JSONDecodeError as e:
         print(f"Error with json: {e}")
-        exit(1)
+        sys.exit(1)
     except OSError as e:
         print(f"Error found: {e}")
 
@@ -34,13 +35,13 @@ def second_json():
             data = json.load(f)
     except FileNotFoundError:   # fichier absent
         print("Error 404: Sorry, the file not found.")
-        exit(1)
+        sys.exit(1)
     except PermissionError:
         print("No permission to open that file.")
-        exit(1)
+        sys.exit(1)
     except json.JSONDecodeError as e:   # json invalide
         print(f"Error with json: {e}")
-        exit(1)
+        sys.exit(1)
     except OSError as e:
         print(f"Error found: {e}")
     else:
@@ -77,13 +78,13 @@ def third_json():
             config = json.load(fp)
     except FileNotFoundError:
         print("404 Error, the file not found.")
-        exit(1)
+        sys.exit(1)
     except PermissionError:
         print("No permission to open that file.")
-        exit(1)
-    except json.JSONDecodeError as e:
+        sys.exit(1)
+    except (json.JSONDecodeError, UnicodeDecodeError) as e:
         print(f"Erron on json: {e}")
-        exit(1)
+        sys.exit(1)
     except OSError as e:
         print(f"Error found: {e}")
     else:

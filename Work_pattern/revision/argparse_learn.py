@@ -26,7 +26,7 @@ def parse_arg():
                         default="data/output/function_calls.json",
                         help="output_file, where to write the output.")
     args = parser.parse_args()
-    print(args.function_definition)
+    print(args.functions_definition)
     print(args.input)
     print(args.output)
 
