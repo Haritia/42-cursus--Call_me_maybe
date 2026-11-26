@@ -21,25 +21,11 @@ class Arguments(BaseModel):
     value: Optional[Any] = None
 
     def model_post_init(self, __context):
-        match (self.type, bool(self.value)):
-            case ("string", True):
+        match self.type:
+            case "string" if self.value is not None:
                 self.value = str(self.value)
-            case ("number", True):
+            case "number" if self.value is not None:
                 self.value = float(self.value)
-
-
-# class Returns(BaseModel):
-#     model_config = ConfigDict(extra='forbid', strict=True)
-#     type: Types
-#     value: Optional[Any] = None
-
-#     def model_post_init(self, __context):
-#         match (self.type, bool(self.value)):
-#             case ("string", True):
-#                 self.value = str(self.value)
-#             case ("number", True):
-#                 self.value = float(self.value)
-
 
 
 class Fuction(BaseModel):
@@ -48,13 +34,6 @@ class Fuction(BaseModel):
     description: str
     parameters: dict[str, Arguments]
     returns: Arguments
-    # parameters: Parameters
-
-
-# class Types(str, Enum):
-#     STR = "string"
-#     INT = "number"
-
 # ----------------------------------------------------------------------------
 
 
@@ -80,7 +59,6 @@ def first_pydantic():
             print(obj)
         except ValidationError as e:
             print(f"Error found: {e}")
-            sys.exit(1)
     try:
         string = json.dumps(data)
         obj = TestPrompt.model_validate_json(string)
@@ -97,19 +75,18 @@ def second_pydantic():
     except FileNotFoundError:   # fichier absent
         print(f"Error 404: Sorry, the file not found.")
         sys.exit(1)
-    except json.JSONDecodeError as e:   # json invalide
+    except UnicodeDecodeError as e:   # json invalide
         print(f"Error with json: {e}")
         sys.exit(1)
 
     try:
         string = json.dumps(data)
-        print(string)
         func = Fuction.model_validate_json(string)
         print(func)
     except ValidationError as e:
         print(f"Validation error found: {e}")
         sys.exit(1)
-    except json.JSONDecodeError as e:
+    except UnicodeDecodeError as e:
         print(f"Error found on json: {e}")
         sys.exit(1)
 
@@ -121,7 +98,7 @@ def third_pydantic():
     except FileNotFoundError:   # fichier absent
         print(f"Error 404: Sorry, the file {f} not found.")
         sys.exit(1)
-    except json.JSONDecodeError as e:   # json invalide
+    except UnicodeDecodeError as e:   # json invalide
         print(f"Error with json: {e}")
         sys.exit(1)
 
@@ -135,20 +112,17 @@ def third_pydantic():
         obj = TestPrompt.model_validate({"prompt": 42})
     except ValidationError as e:
         print(f"Error found: {e}")
-        sys.exit(1)
     try:
         print("--- test vide ---")
         obj = TestPrompt.model_validate({})
     except ValidationError as e:
         print(f"Error found: {e}")
-        sys.exit(1)
     try:
         print("--- test value vide ---/ accepter un '' est toujors un str mais vide ")
         obj = TestPrompt.model_validate({"prompt": ""})
         print(obj)
     except ValidationError as e:
         print(f"Error found: {e}")
-        sys.exit(1)
     try:
         print("--- test on json ---")
         string = json.dumps(data)
@@ -156,7 +130,6 @@ def third_pydantic():
         print(obj.prompt)
     except ValidationError as e:
         print(f"Error found: {e}")
-        sys.exit(1)
 
 
 
