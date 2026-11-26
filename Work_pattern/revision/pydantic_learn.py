@@ -14,21 +14,8 @@ class TestPrompt(BaseModel):
 Types = Literal["string", "number", "boolean", "list", "dict", "set", "tuple"]
 
 
-class Parameters(BaseModel):
+class Arguments(BaseModel):
     model_config = ConfigDict(extra='forbid', strict=False)
-    type: Types
-    value: Optional[Any] = None
-
-    def model_post_init(self, __context):
-        match self.type:
-            case "string" if self.value:
-                self.value = str(self.value)
-            case "number" if self.value:
-                self.value = float(self.value)
-
-
-class Returns(BaseModel):
-    model_config = ConfigDict(extra='forbid', strict=True)
     type: Types
     value: Optional[Any] = None
 
@@ -40,13 +27,26 @@ class Returns(BaseModel):
                 self.value = float(self.value)
 
 
+# class Returns(BaseModel):
+#     model_config = ConfigDict(extra='forbid', strict=True)
+#     type: Types
+#     value: Optional[Any] = None
+
+#     def model_post_init(self, __context):
+#         match (self.type, bool(self.value)):
+#             case ("string", True):
+#                 self.value = str(self.value)
+#             case ("number", True):
+#                 self.value = float(self.value)
+
+
 
 class Fuction(BaseModel):
     model_config = ConfigDict(extra='forbid', strict=True)
     name: str
     description: str
-    parameters: dict[str, Parameters]
-    returns: Returns
+    parameters: dict[str, Arguments]
+    returns: Arguments
     # parameters: Parameters
 
 
@@ -84,6 +84,7 @@ def first_pydantic():
     except ValidationError as e:
         print(f"Error found: {e}")
 
+
 def second_pydantic():
     try:
         with open("Work_pattern/revision/func.json", 'r') as f:
@@ -102,6 +103,7 @@ def second_pydantic():
         print(f"Validation error found: {e}")
     except json.JSONDecodeError as e:
         print(f"Error found on json: {e}")
+
 
 def third_pydantic():
     try:
