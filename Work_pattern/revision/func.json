@@ -5,12 +5,10 @@
       "a": {
         "type": "number",
         "value": 7
-      },
-      "b": {
-        "type": "number"
       }
     },
     "returns": {
-      "type": "number"
+      "type": "number",
+        "value": 14
     }
 }
