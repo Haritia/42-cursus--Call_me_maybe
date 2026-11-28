@@ -3,6 +3,7 @@ import sys
 from pathlib import Path
 
 """
+mini_lesson:
 json.load(file): from config file to python
 json.loads: from json formatted string to python
 json.dump(obj, f):from python to file json format
@@ -12,7 +13,7 @@ jon.dumps(obj): from python to json fomatted string
 
 def first_json():
     try:
-        with open("example.json", 'r', encoding="utf-8") as f:
+        with open(Path(__file__).parent / "example.json", 'r', encoding="utf-8") as f:
             data = json.load(f)
         print(type(data))
         print(type(data[0]))

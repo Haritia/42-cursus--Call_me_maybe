@@ -3,6 +3,10 @@
     "description": "Add two numbers together and return their sum.",
     "parameters": {
       "a": {
+        "type": "nuer",
+        "value": 0
+      },
+      "b": {
         "type": "number",
         "value": 0
       }
