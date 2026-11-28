@@ -7,7 +7,7 @@
 #   By: haranivo <haranivo@student.42antananarivo.   +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/11/17 08:58:40 by haranivo            #+#    #+#            #
-#   Updated: 2026/11/28 08:04:08 by haranivo           ###   ########.fr      #
+#   Updated: 2026/11/28 08:26:04 by haranivo           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -85,6 +85,7 @@ def main() -> None:
         args = parse_arg()
         path_prompt = args.input
         path_func = args.functions_definition
+        path_output = args.output
         prompts = Loading.loads_prompt(path_prompt)
         funcs = Loading.loads_functions(path_func)
     except FileNotFoundError:
@@ -101,6 +102,11 @@ def main() -> None:
     else:
         console.print(prompts)
         console.print(funcs)
+        try:
+            with open(path_output, 'w') as f:
+                json.dump(funcs, f)  # on ecrit dans output quand les resultat json du prompt est trouver
+        except PermissionError:
+            console.print(f"Can't write in '{path_output}'. Permission denied")
 
 
 if __name__ == "__main__":
@@ -143,5 +149,4 @@ if __name__ == "__main__":
                       padding=(1, 2))
         )
         console.print(bloc)
-
 

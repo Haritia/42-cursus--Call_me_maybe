@@ -7,7 +7,7 @@
 #   By: haranivo <haranivo@student.42antananarivo.   +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/11/19 23:41:01 by haranivo            #+#    #+#            #
-#   Updated: 2026/11/28 07:50:16 by haranivo           ###   ########.fr      #
+#   Updated: 2026/11/28 08:26:59 by haranivo           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -74,7 +74,6 @@ class Prompt(BaseModel):
 class ParseError(Exception):
     """Customize error for parsing."""
 
-    model_config = ConfigDict(extra='forbid', strict=True)
     message: str
     details: str = ""
 
